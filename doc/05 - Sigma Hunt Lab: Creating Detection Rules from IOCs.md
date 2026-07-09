@@ -1,22 +1,20 @@
 # 05 - Sigma Hunt Lab: Creating Detection Rules from IOCs
 
-In this room, I worked on a Sigma Hunt scenario as part of my Detection Engineering project. The main objective was to create Sigma rules based on the Indicators of Compromise provided by the Incident Response team after a ransomware incident.
+In this lab, I worked on a Sigma Hunt scenario as part of my Detection Engineering project. The main objective was to create Sigma rules based on the Indicators of Compromise provided by the Incident Response team after a ransomware incident.
 
 <img width="1304" height="654" alt="Ekran görüntüsü 2026-07-09 005038" src="https://github.com/user-attachments/assets/6835e8a0-eb4f-4ee1-bef1-5c3113da9a41" />
 
 > The interface provided a rule editor, a run option for testing detections, and separate challenges for each stage of the attack chain.
 
-In this scenario, I acted as a Detection Engineer. The Incident Responders had already investigated and mitigated the incident, and they provided the attack chain with useful IOCs. My task was to use those IOCs to create detection rules that could help identify similar malicious activity in the future.
+The scenario followed an attack chain where Incident Responders had already investigated and mitigated the incident. My role was to use the provided IOCs and event details to create detection rules that could identify similar malicious activity in the future.
 
-The attack chain included several stages, starting from the execution of a malicious HTA payload and continuing with certutil download activity, Netcat reverse shell execution, PowerUp enumeration, service binary modification, data collection with 7-Zip, data exfiltration with cURL, and ransomware file encryption using the `.huntme` extension.
+The attack chain included multiple stages, starting with malicious HTA execution and continuing with payload download, reverse shell activity, privilege escalation enumeration, persistence, data collection, exfiltration, and ransomware file encryption.
 
-For each challenge, I reviewed the provided IOC details and focused on the required detection fields such as `EventID`, `Image`, `ParentImage`, `CommandLine`, `Hashes`, and `TargetFilename`. These fields were important because they helped me understand what should be matched inside the Sigma rule.
+For each challenge, I reviewed the provided IOC details and selected relevant detection fields such as `EventID`, `Image`, `ParentImage`, `CommandLine`, `Hashes`, and `TargetFilename`. These fields helped define what each Sigma rule needed to match.
 
-I also used the SigHunt interface to write, test, and create Sigma rules. The interface allowed me to submit a rule, check whether it detected the malicious IOC, and view the related log entry for each attack technique.
+I used the SigHunt interface to write, test, and validate Sigma rules against the provided malicious activity. The interface allowed me to submit a rule, check whether it detected the expected IOC, and review the related log entry for each attack technique.
 
-This room was useful because it showed how detection logic can be built from an incident report. Instead of only looking at alerts, I practised turning real indicators into Sigma rules by using process execution details, command-line activity, file events, and other relevant log fields.
-
-The main skills I practised in this room were:
+The main skills I practised in this lab were:
 
 * Creating Sigma rules from IOCs
 * Choosing the correct detection fields
@@ -25,8 +23,6 @@ The main skills I practised in this room were:
 * Testing rules against malicious activity
 * Reviewing related log entries
 * Thinking like a Detection Engineer
-
-Overall, this room helped me understand how Sigma can be used to improve detection capabilities after an incident and how IOCs can be converted into practical detection logic.
 
 
 ### Challenge #1 - Malicious mshta Execution
@@ -233,18 +229,18 @@ Sysmon Event ID `11` represents file creation activity. Monitoring suspicious or
 
 ## Summary
 
-This Sigma Hunt room helped me practise creating detection rules from an incident report and provided IOCs. Across the challenges, I created Sigma rules for different stages of a ransomware attack chain, including execution, tool download, reverse shell activity, privilege escalation enumeration, persistence, collection, exfiltration, and ransomware file encryption.
+This Sigma Hunt lab focused on creating detection rules from incident response findings and provided IOCs. Across the challenges, I wrote Sigma rules for different stages of a ransomware attack chain, including initial execution, tool download, reverse shell activity, privilege escalation enumeration, persistence, collection, exfiltration, and ransomware file encryption.
 
-The main value of this room was understanding how detection engineers can turn attacker behavior and IOCs into practical detection logic. I also practised choosing useful fields such as `Image`, `CommandLine`, `Hashes`, and `TargetFilename` depending on the activity being detected.
+The main value of this lab was understanding how attacker behaviour and IOCs can be turned into practical detection logic. Depending on the activity being detected, different fields were useful, such as `Image`, `ParentImage`, `CommandLine`, `Hashes`, and `TargetFilename`.
 
-Overall, this exercise improved my understanding of Sigma rule creation, process creation detection, command-line analysis, and ransomware-related detection engineering.
+This exercise strengthened my practical experience with Sigma rule creation, process creation detection, command-line analysis, and ransomware-related detection engineering.
 
 
 ## Key Takeaways
 
-This lab helped me understand how Sigma rules can be created from incident response findings and IOCs. Instead of only reviewing alerts, I practised writing detection logic for different stages of a ransomware attack chain.
+This lab showed how Sigma rules can be created from incident response findings and IOCs. Instead of only reviewing alerts, I practised writing detection logic for different stages of a ransomware attack chain.
 
-The most important takeaways from this lab were:
+The key takeaways from this lab were:
 
 - Sigma rules can be used to turn IOCs into reusable detection logic.
 - Choosing the correct log source is important for rule matching.
@@ -269,6 +265,6 @@ The most important takeaways from this lab were:
 | Challenge #8 | cURL data exfiltration | Successfully detected |
 | Challenge #9 | Ransomware file encryption | Successfully detected |
 
-
+This lab showed how incident response findings and IOCs can be turned into practical Sigma detections that support future threat detection and SOC investigation workflows.
 
 
