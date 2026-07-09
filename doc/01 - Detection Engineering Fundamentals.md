@@ -22,7 +22,7 @@ From a SOC perspective, a good detection should help analysts answer questions s
 * Could this alert create false positives?
 * How can the detection be tested and improved?
 
-This helped me understand that detection engineering is not only about writing rules. It also requires understanding the environment, attacker behaviour, and the quality of the available telemetry.
+This highlights that detection engineering is not only about writing rules. It also requires understanding the environment, attacker behaviour, and the quality of available telemetry. It also requires understanding the environment, attacker behaviour, and the quality of the available telemetry.
 
 ## Detection Types
 
@@ -59,7 +59,7 @@ The benefit of this approach is that it can help identify unknown attacker activ
 
 However, one challenge is that modelling requires a clean and accurate baseline. If malicious activity already exists during the baseline period, there is a risk that bad behaviour may be accepted as normal.
 
-This showed me that baselining is powerful, but it must be handled carefully.
+This shows that baselining is powerful, but it must be handled carefully.
 
 ## Indicator Detection
 
@@ -135,7 +135,7 @@ This section also helped me understand why detection quality matters. A detectio
 
 After understanding the main detection types, I also looked at the general workflow used to build, test, deploy, and improve detections.
 
-This part helped me understand that detection engineering is not a single step. It starts with identifying detection gaps, continues with selecting the right data sources, and then moves into writing, testing, deploying, and tuning detection rules.
+Detection engineering is not a single-step process. It starts with identifying detection gaps, continues with selecting the right data sources, and then moves into writing, testing, deploying, and tuning detection rules.
 
 ## Detection Gap Analysis
 
@@ -310,7 +310,7 @@ These frameworks also help during detection gap analysis because they allow anal
 * Are we detecting only indicators, or also attacker behaviour?
 * Do we have enough telemetry to detect activity across the full attack chain?
 
-This helped me understand why frameworks are not only theoretical. They can directly support detection planning, rule writing, threat hunting, and SOC investigations.
+These frameworks are not only theoretical. They can directly support detection planning, rule writing, threat hunting, and SOC investigations.
 
 
 ## Alerting and Detection Strategy Framework
@@ -408,7 +408,7 @@ This scenario also showed me why response guidance matters. When this type of al
 
 ## Conclusion
 
-This section helped me understand the foundation of detection engineering and how different detection approaches can be used inside a SOC environment.
+This section covered the foundation of detection engineering and showed how different detection approaches can be used inside a SOC environment.
 
 Detection engineering is not only about creating alerts. It also includes understanding attacker behaviour, choosing the right log sources, reducing false positives, testing detection logic, and maintaining detections over time.
 
