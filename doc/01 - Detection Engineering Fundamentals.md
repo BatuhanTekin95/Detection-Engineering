@@ -1,10 +1,10 @@
-# Detection Engineering Fundamentals
+# 01 - Detection Engineering Fundamentals
 
 ## Introduction
 
 Detection engineering is an important part of modern SOC operations because attackers are constantly changing their techniques, tools, and behaviours. For this reason, security teams cannot rely only on static alerts or simple indicator-based detections.
 
-In this section, I focused on understanding how detections are created, what types of detections exist, and why detection logic needs to be tested, tuned, and maintained over time.
+This section focuses on how detections are created, what types of detections exist, and why detection logic needs to be tested, tuned, and maintained over time.
 
 The main objective was to understand the difference between environment-based detection and threat-based detection, and how Detection as Code can help security teams manage detections in a more structured way.
 
@@ -22,7 +22,7 @@ From a SOC perspective, a good detection should help analysts answer questions s
 * Could this alert create false positives?
 * How can the detection be tested and improved?
 
-This highlights that detection engineering is not only about writing rules. It also requires understanding the environment, attacker behaviour, and the quality of available telemetry. It also requires understanding the environment, attacker behaviour, and the quality of the available telemetry.
+This highlights that detection engineering is not only about writing rules. It also requires understanding the environment, attacker behaviour, and the quality of available telemetry.
 
 ## Detection Types
 
@@ -31,7 +31,7 @@ Threat detection can be viewed from two main perspectives:
 * Environment-based detection
 * Threat-based detection
 
-Environment-based detection focuses on changes, misconfigurations, and deviations inside the organization’s own infrastructure. Threat-based detection focuses more on attacker activity, indicators, tools, tactics, and behaviours.
+Environment-based detection focuses on changes, misconfigurations, and deviations inside the organisation’s own infrastructure. Threat-based detection focuses more on attacker activity, indicators, tools, tactics, and behaviours.
 
 Both approaches are useful, but they have different strengths and weaknesses. A strong detection strategy should not depend on only one type of detection.
 
@@ -41,11 +41,11 @@ Configuration detection focuses on identifying misconfigurations or unexpected c
 
 For example, if a critical system suddenly has a risky configuration change, this type of detection can help identify it.
 
-The main advantage of configuration detection is that it can be easier to create and maintain in static environments. It can also be useful when the organization already knows what the correct configuration should look like.
+The main advantage of configuration detection is that it can be easier to create and maintain in static environments. It can also be useful when the organisation already knows what the correct configuration should look like.
 
 However, this approach can become difficult in dynamic environments where configurations change frequently. If the baseline is not accurate, this can create too many false positives.
 
-From an analyst point of view, I think this detection type is useful, but it depends heavily on knowing the environment well.
+From an analyst point of view, this detection type is useful, but it depends heavily on knowing the environment well.
 
 ## Modelling
 
@@ -85,7 +85,7 @@ This approach is stronger because it focuses on how attackers operate.
 
 However, behaviour-based detection usually requires more telemetry and a better understanding of attacker techniques. It can also require more tuning during the first implementation.
 
-From my point of view, this is one of the most important detection types for SOC analysts because it is closer to real attacker activity.
+Threat behaviour detection is one of the most important detection types for SOC analysts because it is closer to real attacker activity.
 
 ## Detection Types Summary
 
@@ -114,11 +114,11 @@ Some important parts of Detection as Code include:
 
 <img width="3834" height="3714" alt="d5dcb2327fef9f42f4958212efb5dd2c" src="https://github.com/user-attachments/assets/30c39a01-1f78-4dcf-9cb0-daa700304be8" />
 
-> The Detection as Code workflow helped me understand that detections should not be treated as one-time rules. They need to be tested, updated, and improved as the environment and attacker behaviours change.
+> The Detection as Code workflow shows that detections should not be treated as one-time rules. They need to be tested, updated, and improved as the environment and attacker behaviours change.
 
 ## Detection Types Notes
 
-The most important point I learned from this section is that every detection type has advantages and limitations.
+A key point from this section is that every detection type has advantages and limitations.
 
 Indicator-based detections are fast to create, but they can become outdated quickly.
 
@@ -128,7 +128,7 @@ Configuration and modelling detections can be useful for identifying environment
 
 Because of this, a strong detection strategy should combine multiple detection types instead of relying on only one approach.
 
-This section also helped me understand why detection quality matters. A detection that creates too many false positives can waste analyst time, while a detection that is too narrow may miss real attacker activity.
+This section also highlights why detection quality matters. A detection that creates too many false positives can waste analyst time, while a detection that is too narrow may miss real attacker activity.
 
 
 ## Detection Engineering Workflow
@@ -139,14 +139,14 @@ Detection engineering is not a single-step process. It starts with identifying d
 
 ## Detection Gap Analysis
 
-The first step is identifying areas where the organization can improve its detection coverage. This process is also related to threat modelling because analysts need to understand which threats, attack paths, and TTPs may affect the environment.
+The first step is identifying areas where the organisation can improve its detection coverage. This process is also related to threat modelling because analysts need to understand which threats, attack paths, and TTPs may affect the environment.
 
 Detection gap analysis can be done in two ways:
 
 * **Reactive:** Reviewing previous incidents and identifying what was missed during detection or response.
 * **Proactive:** Using frameworks such as MITRE ATT&CK and threat intelligence sources to identify possible attacker behaviours before an incident happens.
 
-This helped me understand that detections should not only be created after an incident. They can also be planned proactively based on likely attacker techniques and known gaps in the environment.
+Detections should not only be created after an incident. They can also be planned proactively based on likely attacker techniques and known gaps in the environment.
 
 ## Data Source Identification and Log Collection
 
@@ -154,7 +154,7 @@ After identifying possible threats and detection gaps, the next step is choosing
 
 A detection is only useful if the required logs are available. For example, suspicious PowerShell activity may require process creation logs, command-line logging, or PowerShell script block logs. Network-based activity may require firewall, proxy, DNS, or IDS logs.
 
-This part showed me that log source selection is one of the most important parts of detection engineering. If the right telemetry is missing, even a well-written detection rule may not work properly.
+This part shows that log source selection is one of the most important parts of detection engineering. If the right telemetry is missing, even a well-written detection rule may not work properly.
 
 Once the required data sources are identified, logs and metadata should be collected from relevant systems. Depending on the environment, this can include endpoint logs, network logs, authentication logs, Sysmon events, firewall logs, and SIEM data.
 
@@ -169,7 +169,7 @@ Security baselines can be grouped into two categories:
 * **High-level baselines:** Broad standards based on security policies.
 * **Technical baselines:** More detailed configuration and activity standards based on operating systems, network behaviour, IAM policies, and application activity.
 
-This helped me understand why baselining is important before creating detections. Without a baseline, it can be difficult to decide whether an event is actually suspicious or just normal activity for that environment.
+Baselining is important before creating detections. Without a baseline, it can be difficult to decide whether an event is actually suspicious or just normal activity for that environment.
 
 ## Rule Writing
 
@@ -179,7 +179,7 @@ Detection rules are used to identify abnormal patterns in logged events. Dependi
 
 In this repository, I focused more on Sigma because it provides a generic way to write detection logic that can be adapted to different SIEM platforms.
 
-This part helped me understand that rule writing should be based on clear detection logic. A rule should not only look for suspicious activity, but also provide enough context for analysts to investigate the alert properly.
+Rule writing should be based on clear detection logic. A rule should not only look for suspicious activity, but also provide enough context for analysts to investigate the alert properly.
 
 ## Deployment, Automation and Tuning
 
@@ -187,7 +187,7 @@ After a detection rule is written and tested, it needs to be deployed and monito
 
 However, deploying a detection is not the final step. Over time, detections need to be reviewed, tuned, and updated because attacker techniques, infrastructure, and normal business activity can change.
 
-This part helped me understand that detection engineering is an ongoing process. A detection that works well today may become noisy, outdated, or ineffective later if it is not maintained.
+Detection engineering is an ongoing process. A detection that works well today may become noisy, outdated, or ineffective later if it is not maintained.
 
 Tuning is also important for reducing false positives. If a detection creates too much noise, analysts may start ignoring alerts. Because of this, detection quality is as important as detection coverage.
 
@@ -206,11 +206,11 @@ Tuning is also important for reducing false positives. If a detection creates to
 
 ## Analyst Notes
 
-The most important point I learned from this workflow is that detection engineering starts before writing a rule.
+A key point from this workflow is that detection engineering starts before writing a rule.
 
 If the threat is not understood, the right data source is not selected, or the baseline is not clear, the detection may not provide useful results. A good detection needs context, reliable telemetry, and continuous tuning.
 
-This workflow also showed me that detections should be treated as living content. They need to be reviewed and improved as the environment changes and attackers adapt their techniques.
+This workflow also shows that detections should be treated as living content. They need to be reviewed and improved as the environment changes and attackers adapt their techniques.
 
 
 ## Frameworks Used in Detection Engineering
@@ -221,7 +221,7 @@ These frameworks are useful because detection engineering is not only about writ
 
 ## MITRE ATT&CK and CAR Frameworks
 
-MITRE ATT&CK is one of the most useful frameworks for mapping attacker behaviour. It organizes adversary activity into tactics and techniques such as Initial Access, Execution, Persistence, Credential Access, Lateral Movement, Exfiltration, and Impact.
+MITRE ATT&CK is one of the most useful frameworks for mapping attacker behaviour. It organises adversary activity into tactics and techniques such as Initial Access, Execution, Persistence, Credential Access, Lateral Movement, Exfiltration, and Impact.
 
 From a detection engineering perspective, ATT&CK helps analysts understand what to look for when building detections. Instead of only focusing on individual indicators, analysts can map detection logic to specific attacker techniques.
 
@@ -231,8 +231,7 @@ The Cyber Analytics Repository, also known as CAR, can also support detection en
 
 <img width="1634" height="609" alt="3002249bee56ca5ab666e92e461cdb48" src="https://github.com/user-attachments/assets/048f7e4d-076f-4b17-984e-575420ab762b" />
 
-> The image shows the MITRE ATT&CK matrix. It helped me understand how attacker tactics and techniques can be mapped during detection gap analysis and detection planning.
-
+> The image shows the MITRE ATT&CK matrix and how attacker tactics and techniques can be mapped during detection gap analysis and detection planning.
 
 ## Pyramid of Pain
 
@@ -248,7 +247,7 @@ For example, detecting a malicious IP address can be useful, but the attacker ca
 
 > The image shows why detections based on tools and TTPs create more difficulty for attackers than detections based only on hashes, IP addresses, or domains.
 
-From my point of view, this framework clearly explains why SOC teams should not only depend on IOCs. IOCs are useful for quick detection and scoping, but detections based on attacker behaviour usually provide better long-term value.
+This framework clearly explains why SOC teams should not only depend on IOCs. IOCs are useful for quick detection and scoping, but detections based on attacker behaviour usually provide better long-term value.
 
 ## Cyber Kill Chain
 
@@ -270,22 +269,19 @@ For example, detections can be created for suspicious delivery methods, exploita
 
 <img width="920" height="456" alt="491cbe4c1851ca69aea2a387e5525321" src="https://github.com/user-attachments/assets/3728bbe8-e54a-4c19-ad08-a2980c0829f9" />
 
-> The image shows the main phases of the Cyber Kill Chain. It helped me understand how an attacker can move from reconnaissance to final objectives, and how detections can be planned across different stages of an attack.
-
+> The image shows the main phases of the Cyber Kill Chain and how detections can be planned across different stages of an attack.
 
 ## Unified Kill Chain
 
-The Unified Kill Chain expands the original Cyber Kill Chain by combining it with other frameworks such as MITRE ATT&CK.
+The Unified Kill Chain shows that detection coverage should exist across multiple stages of an attack, not only at the initial access or impact phase.
 
 It provides a more detailed view of an intrusion by covering more phases across the full attack lifecycle.
 
 This is useful because real attacks do not always follow a simple linear path. Attackers may move between discovery, privilege escalation, lateral movement, credential access, collection, exfiltration, and impact.
 
-The Unified Kill Chain helped me understand that detection coverage should exist across multiple stages of an attack, not only at the initial access or impact phase.
-
 <img width="1051" height="678" alt="f78d42cc461eaebffd806666646f6cbb" src="https://github.com/user-attachments/assets/30204350-2214-414e-8855-fc71eb038d1e" />
 
-> The image shows the 18 phases of the Unified Kill Chain. It helped me understand that real intrusions can involve many stages such as persistence, defense evasion, pivoting, discovery, privilege escalation, credential access, lateral movement, exfiltration, and impact.
+> The image shows the 18 phases of the Unified Kill Chain and highlights that real intrusions can involve many stages such as persistence, defense evasion, pivoting, discovery, privilege escalation, credential access, lateral movement, exfiltration, and impact.
 
 ## Framework Summary
 
@@ -299,7 +295,7 @@ The Unified Kill Chain helped me understand that detection coverage should exist
 
 ## Analyst Notes
 
-The most important point I learned from these frameworks is that detection engineering becomes stronger when it focuses on attacker behaviour rather than only static indicators.
+A key point from these frameworks is that detection engineering becomes stronger when it focuses on attacker behaviour rather than only static indicators.
 
 Indicators such as IP addresses, domains, and hashes are useful for quick detection and scoping, but attackers can change them quickly. Techniques and behaviours are harder to change, so detecting them can create more difficulty for the attacker.
 
@@ -317,7 +313,7 @@ These frameworks are not only theoretical. They can directly support detection p
 
 I also reviewed the Alerting and Detection Strategy Framework, which provides a structured way to document detection content before publishing it into production.
 
-This framework helped me understand that a detection should not be created only as a simple rule. It should also include the reason for the alert, the related attacker behaviour, the technical context, possible blind spots, false positives, validation steps, priority, and response guidance.
+This framework shows that a detection should not be created only as a simple rule. It should also include the reason for the alert, the related attacker behaviour, the technical context, possible blind spots, false positives, validation steps, priority, and response guidance.
 
 The main stages of the framework are:
 
@@ -333,17 +329,17 @@ The main stages of the framework are:
 
 <img width="1140" height="665" alt="28b4c33f004df15d26ae8d5b2862b445" src="https://github.com/user-attachments/assets/b9473b6e-f205-4cfe-8ab3-0f68fbfbce4d" />
 
-> The image shows the main stages of the Alerting and Detection Strategy Framework. It helped me understand that a detection should include not only the alert logic, but also its goal, categorisation, technical context, blind spots, false positives, validation steps, priority, and response guidance.
+> The image shows the main stages of the Alerting and Detection Strategy Framework. A detection should include not only the alert logic, but also its goal, categorisation, technical context, blind spots, false positives, validation steps, priority, and response guidance.
 
-From my point of view, this framework is useful because it forces the detection engineer to think beyond the rule itself. A detection should be understandable, testable, and useful for the analyst who will investigate the alert later.
+This framework is useful because it forces the detection engineer to think beyond the rule itself. A detection should be understandable, testable, and useful for the analyst who will investigate the alert later.
 
-It also showed me that documentation is an important part of detection engineering. If an alert does not explain its goal, context, blind spots, and response steps clearly, it can create confusion during triage.
+It also highlights that documentation is an important part of detection engineering. If an alert does not explain its goal, context, blind spots, and response steps clearly, it can create confusion during triage.
 
 ## Detection Maturity Level Model
 
-The Detection Maturity Level model helps assess how mature an organization’s detection capability is.
+The Detection Maturity Level model helps assess how mature an organisation’s detection capability is.
 
-This model shows that detection maturity is not only about collecting threat intelligence. The important part is how well an organization can apply that intelligence to detection and response.
+This model shows that detection maturity is not only about collecting threat intelligence. The important part is how well an organisation can apply that intelligence to detection and response.
 
 The model starts from no detection capability and moves toward more abstract and intelligence-driven detection. Lower levels focus more on simple indicators and artefacts, while higher levels focus on attacker procedures, techniques, tactics, strategy, and goals.
 
@@ -360,7 +356,7 @@ The model starts from no detection capability and moves toward more abstract and
 | DML-8 Goals                    | Understanding what the adversary wants to achieve              |
 
 
-This model helped me understand why mature detection programs should move beyond simple indicators.
+This model shows why mature detection programs should move beyond simple indicators.
 
 Detecting IP addresses, domains, or hashes can be useful, but these are easier for attackers to change. Higher maturity detections focus more on tools, procedures, techniques, tactics, and attacker goals.
 
@@ -368,13 +364,13 @@ From a SOC perspective, this is important because mature detections can provide 
 
 ## Analyst Notes
 
-The main point I learned from these models is that detection quality depends on documentation, validation, and maturity.
+A key point from these models is that detection quality depends on documentation, validation, and maturity.
 
 The Alerting and Detection Strategy Framework helps document a detection properly before it is deployed. It makes the detection easier to understand, test, investigate, and maintain.
 
 The Detection Maturity Level model helps show how advanced a detection capability is. It also explains why detections based only on atomic indicators are limited compared to detections based on attacker behaviour, techniques, and tactics.
 
-Together, these models showed me that detection engineering is not only about creating alerts. It is also about building detections that are documented, tested, understandable, and useful during real investigations.
+Together, these models show that detection engineering is not only about creating alerts. It is also about building detections that are documented, tested, understandable, and useful during real investigations.
 
 
 ## Practical ADS Framework Example: Privileged Account and Group Changes
@@ -393,17 +389,17 @@ The objective of this scenario was to understand how the ADS Framework can be us
 | False Positives             | Legitimate administrative changes, planned IAM operations, helpdesk activity, automated provisioning, or approved group membership updates may trigger the alert.                                                                                                                                                                                                                                                  |
 | Validation                  | Add or remove a test user from a privileged group in a lab environment and confirm that the expected Windows Security Event is generated and detected by the SIEM rule.                                                                                                                                                                                                                                            |
 | Priority                    | High                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Response                    | Validate the group modified, the user added or removed, and the user account that made the change. Check whether the change was approved. If the activity is suspicious, investigate recent logons, related account activity, and possible privilege escalation attempts.                                                                                                                                          |
+| Response                    | Validate the group modified, the user added or removed, and the user account that made the change. Check whether the change was approved. If the activity is suspicious, investigate recent logons, related account activity, and possible privilege escalation attempts.       |
 
 ## Analyst Notes
 
-This example helped me understand how the ADS Framework can turn a detection idea into a documented detection strategy.
+This example shows how the ADS Framework can turn a detection idea into a documented detection strategy.
 
 Instead of only saying “alert on privileged group changes,” the framework forces the analyst to think about the goal, categorisation, data sources, assumptions, false positives, validation steps, priority, and response actions.
 
 From a SOC perspective, this is important because privileged group changes can have a direct impact on domain security. If an attacker adds a controlled account to an administrative group, they may gain higher privileges and continue the attack with more access.
 
-This scenario also showed me why response guidance matters. When this type of alert triggers, the analyst should not only look at the changed group. They should also validate who made the change, whether it was approved, and whether the account was used for suspicious activity before or after the modification.
+This scenario also shows why response guidance matters. When this type of alert triggers, the analyst should not only look at the changed group. They should also validate who made the change, whether it was approved, and whether the account was used for suspicious activity before or after the modification.
 
 
 ## Conclusion
@@ -413,13 +409,5 @@ This section covered the foundation of detection engineering and showed how diff
 Detection engineering is not only about creating alerts. It also includes understanding attacker behaviour, choosing the right log sources, reducing false positives, testing detection logic, and maintaining detections over time.
 
 The main takeaway from this section is that effective detections should be clear, testable, and adaptable. A detection that is not maintained can quickly become noisy or outdated, especially as attackers change their techniques and infrastructure.
-
-
-
-
-
-
-
-
 
 
