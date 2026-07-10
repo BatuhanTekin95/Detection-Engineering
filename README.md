@@ -1,121 +1,259 @@
 # Detection Engineering
 
-## Introduction
+This repository documents my Detection Engineering learning path and hands-on SOC-focused labs.
 
-This repository contains my notes and lab write-ups from the Detection Engineering section.
+The main goal of this project is to understand how detections are created, tested, tuned, documented, and improved inside a Security Operations Center environment.
 
-Before starting this repository, I worked on several SOC-related projects, including phishing analysis, SIEM investigations, threat hunting, and firewall fundamentals. Those projects helped me understand how attacks appear in logs, how analysts investigate suspicious activity, and how network or endpoint events can be used during an investigation.
+The project covers detection engineering fundamentals, tactical detection, threat intelligence usage, Sigma rule development, IOC-based hunting, endpoint detection with Aurora EDR, and SOAR automation workflows.
 
-In my phishing project, I focused on email-based threats, header analysis, suspicious domains, attachments, and indicators of compromise. That project helped me understand how attackers use social engineering and how analysts can identify suspicious email activity.
+---
 
-In my SIEM investigation project, I worked with Splunk and Elastic to investigate multi-stage attacks, Active Directory lateral movement, PowerShell activity, credential access, persistence, and ransomware impact. That project gave me a stronger understanding of how different log sources can be correlated to reconstruct an attack timeline.
+## Project Overview
 
-In my firewall project, I focused on firewall concepts, rule direction, traffic filtering, Windows Defender Firewall, and how network controls can reduce attack surface.
+Detection engineering is not only about writing alert rules. A useful detection should have clear logic, relevant telemetry, proper context, false positive awareness, and investigation guidance.
 
-After completing those projects, I wanted to move one step further and focus on how detections are created, tested, tuned, and improved. This repository is focused on that part of SOC work.
+Across these rooms and labs, I focused on:
 
-The main goal of this repository is to understand how suspicious behaviour can be converted into useful detection logic.
+- Understanding different detection types
+- Mapping attacker behaviour to detection logic
+- Using threat intelligence in SOC workflows
+- Writing and reviewing Sigma rules
+- Creating detections from IOCs
+- Testing detections against malicious activity
+- Understanding endpoint detection and response concepts
+- Learning how SOAR playbooks support SOC automation and response
 
-## Repository Focus
+---
 
-This repository focuses on:
+## Repository Contents
 
-* Detection engineering fundamentals
-* Detection types
-* Detection as Code
-* Tactical detection development
-* Threat intelligence for SOC
-* Sigma rule writing
-* Detection validation
-* Endpoint detection with EDR telemetry
-* SOAR concepts and response automation
+| # | Room / Lab | Main Focus |
+|---|---|---|
+| 01 | [Detection Engineering Fundamentals](https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/01%20-%20Detection%20Engineering%20Fundamentals.md) | Detection types, Detection as Code, detection workflow, frameworks, ADS Framework, and detection maturity |
+| 02 | [Tactical Detection](https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/02.%20Tactical%20Detection.md) | IOC-based detections, Sigma conversion, public Sigma rules, tripwires, honeypots, and Sigma rule testing |
+| 03 | [Threat Intelligence for SOC](https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/03.%20Threat%20Intelligence%20for%20SOC.md) | Threat intelligence types, IOC handling, Uncoder, Kibana hunting, firewall blocking, DNS sinkhole, and ElastAlert |
+| 04 | [Sigma](https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/04.%20Sigma.md) | Sigma syntax, rule fields, logsource, detection logic, modifiers, false positive filtering, and practical Sigma labs |
+| 05 | [Sigma Hunt Lab: Creating Detection Rules from IOCs](https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/05%20-%20Sigma%20Hunt%20Lab%3A%20Creating%20Detection%20Rules%20from%20IOCs.md) | Creating Sigma rules from incident response IOCs across a ransomware attack chain |
+| 06 | [Aurora EDR: Endpoint Detection and Response Lab](https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/06%20-%20Aurora%20EDR%3A%20Endpoint%20Detection%20and%20Response%20Lab.md) | Endpoint telemetry, Windows Event Logs, ETW, Aurora EDR, Sigma-based detections, and response actions |
+| 07 | [Introduction to SOAR: SOC Automation and Response Workflows](https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/07%20-%20Introduction%20to%20SOAR%3A%20SOC%20Automation%20and%20Response%20Workflows.md) | SOC challenges, SOAR concepts, orchestration, automation, response, and playbook workflows |
 
-The purpose is not only to collect notes, but also to understand how detections are built from real attacker behaviour and how they can support SOC analysts during alert triage and investigations.
+---
 
-## Why I Created This Repository
-
-During my previous SIEM and threat hunting investigations, I mostly focused on answering questions such as:
-
-* What happened?
-* Which host was affected?
-* Which user account was involved?
-* What command was executed?
-* Which technique did the attacker use?
-* What was the impact?
-
-Detection engineering adds another important question:
-
-* How can this activity be detected earlier next time?
-
-That is why I created this repository.
-
-I wanted to understand how detection rules are planned, written, tested, tuned, and maintained. A detection should not only generate an alert. It should provide useful context, reduce unnecessary noise, and help analysts focus on real threats.
-
-## Repository Structure
+## Sections
 
 ### 01 - Detection Engineering Fundamentals
 
-This section introduces the main concepts of detection engineering, including detection types, environment-based detection, threat-based detection, and Detection as Code.
+This section covers the foundation of detection engineering and explains how different detection approaches can be used inside a SOC environment.
+
+Topics covered include:
+
+- Configuration detection
+- Modelling
+- Indicator detection
+- Threat behaviour detection
+- Detection as Code
+- Detection gap analysis
+- Data source identification
+- Baseline creation
+- Rule writing, testing, deployment, and tuning
+- MITRE ATT&CK, CAR, Pyramid of Pain, Cyber Kill Chain, and Unified Kill Chain
+- Alerting and Detection Strategy Framework
+- Detection Maturity Level Model
+
+The main takeaway from this section is that effective detections should be clear, testable, documented, and adaptable over time.
+
+---
 
 ### 02 - Tactical Detection
 
-This section focuses on converting attacker behaviour into detection logic. The main focus is understanding how analysts can detect suspicious activity based on techniques, tools, and behaviours instead of relying only on static indicators.
+This section focuses on creating practical detections from known threats, previous incident findings, threat intelligence, and Indicators of Compromise.
+
+Topics covered include:
+
+- IOC-based detection logic
+- Sigma rule development
+- Public Sigma rule review
+- Rule conversion with Uncoder
+- Follina-MSDT detection example
+- Log4j suspicious shell detection example
+- Tripwire detection
+- Honeypots and hidden files
+- Object access auditing
+- Sigma rule testing and tuning
+
+The main point of this section is that tactical detections should be relevant, actionable, and useful for investigation.
+
+---
 
 ### 03 - Threat Intelligence for SOC
 
-This section covers how threat intelligence can support SOC operations and detection development. It focuses on IOCs, TTPs, threat actor behaviour, and intelligence-driven detection.
+This section focuses on how threat intelligence can support SOC monitoring, detection, investigation, prevention, and response.
+
+Topics covered include:
+
+- Threat intelligence types
+- Threat intelligence producers and consumers
+- IOC handling
+- Defanged indicator conversion
+- IOC query generation with Uncoder
+- IOC hunting in Kibana
+- Destination IP and port analysis
+- Firewall blocking
+- Domain blocking
+- DNS sinkhole concepts
+- ElastAlert alerting workflow
+
+This section shows how threat intelligence becomes more useful when it is connected to real SOC workflows.
+
+---
 
 ### 04 - Sigma
 
-This section focuses on Sigma rule writing and vendor-neutral detection logic. The goal is to understand how Sigma rules are structured and how they can be used across different SIEM platforms.
+This section focuses on Sigma, a vendor-agnostic rule format used to write log-based detection rules.
 
-### 05 - SigHunt
+Topics covered include:
 
-This section focuses on using Sigma rules and detection logic for hunting activity. It connects detection engineering with threat hunting.
+- Sigma rule structure
+- YAML syntax
+- Common Sigma fields
+- Logsource configuration
+- Detection blocks
+- Search identifiers
+- Conditions
+- Value modifiers
+- False positive filtering
+- Rule metadata
+- MITRE ATT&CK tagging
+
+The practical part includes examples such as suspicious AnyDesk installation detection, scheduled task activity, ransomware-related behaviour, and Sigma rule validation.
+
+---
+
+### 05 - Sigma Hunt Lab
+
+This lab focuses on creating Sigma rules from IOCs provided after a ransomware incident.
+
+The attack chain included:
+
+- Malicious `mshta.exe` execution
+- `certutil.exe` payload download
+- Netcat reverse shell activity
+- PowerUp privilege escalation enumeration
+- Service binary modification
+- RunOnce persistence
+- Data collection
+- Exfiltration activity
+- Ransomware file encryption
+
+The purpose of this lab was to practise turning incident response findings into reusable detection rules.
+
+---
 
 ### 06 - Aurora EDR
 
-This section focuses on endpoint detection concepts and EDR telemetry. The main objective is to understand how endpoint events can help detect suspicious process activity, command-line behaviour, and attacker techniques.
+This section focuses on endpoint detection and response concepts using Aurora EDR.
+
+Topics covered include:
+
+- Endpoint telemetry
+- Windows Event Logs
+- Windows Event Viewer
+- Event Tracing for Windows
+- Aurora EDR overview
+- Aurora and Sysmon comparison
+- Aurora presets
+- Aurora output options
+- Aurora response actions
+- Aurora Event IDs
+- Sigma-based endpoint detections
+
+This lab connects endpoint visibility, Sigma-based detection logic, and response actions inside an EDR workflow.
+
+---
 
 ### 07 - Introduction to SOAR
 
-This section introduces SOAR concepts, including playbooks, alert enrichment, response automation, and case management.
+This section focuses on how SOAR can help SOC teams reduce repetitive manual work and improve response workflows.
 
-## Skills Practiced
+Topics covered include:
 
-Throughout this repository, I practiced and documented concepts related to:
+- Traditional SOC challenges
+- Alert fatigue
+- Disconnected tools
+- Manual processes
+- SOAR concepts
+- Orchestration
+- Automation
+- Response
+- SOC analyst decision points
+- Phishing playbook
+- CVE patching playbook
 
-* SOC analysis
-* Detection logic
-* Alert triage
-* Log source selection
-* Detection tuning
-* False positive analysis
-* MITRE ATT&CK mapping
-* Sigma rule structure
-* Threat intelligence usage
-* Endpoint detection concepts
-* SOAR workflow basics
+The main point of this section is that SOAR does not replace SOC analysts. It helps analysts work more efficiently by automating repetitive steps and standardising response workflows.
 
-## Previous Related Projects
+---
 
-This repository builds on my previous SOC and cybersecurity projects:
+## Tools and Platforms Mentioned
 
-* **SOC Phishing Case Studies**
-  Focused on phishing analysis, email headers, suspicious attachments, malicious URLs, and IOC extraction.
+- SIEM
+- EDR
+- Sigma
+- Uncoder.io
+- Kibana
+- Elastic Stack
+- Windows Event Logs
+- Windows Event Viewer
+- Event Tracing for Windows
+- Aurora EDR
+- Sysmon
+- Firewall rules
+- DNS sinkhole
+- ElastAlert
+- SOAR playbooks
+- MITRE ATT&CK
+- Cyber Kill Chain
+- Pyramid of Pain
 
-* **SIEM Investigation Case Studies**
-  Focused on Splunk and Elastic investigations, multi-stage attacks, lateral movement, credential access, persistence, and ransomware activity.
+---
 
-* **Firewall Fundamentals**
-  Focused on firewall concepts, traffic filtering, rule direction, network controls, and reducing attack surface.
+## Key Skills Practised
 
-These projects helped me build a foundation in investigation and analysis. This repository continues from that foundation and focuses more on detection creation and improvement.
+Through this project, I practised:
 
-## Main Takeaway
+- Analysing detection logic
+- Understanding attacker behaviour
+- Mapping detections to security frameworks
+- Reviewing required log sources
+- Using IOCs in investigations
+- Creating Sigma rules
+- Testing detection rules
+- Considering false positives
+- Understanding detection maturity
+- Reviewing endpoint detection alerts
+- Connecting SOC workflows with automation and response
 
-The main takeaway from this repository is that detection engineering is not only about writing alert rules.
+---
 
-A good detection should be based on attacker behaviour, reliable log sources, clear logic, and continuous improvement. It should be tested, tuned, and updated as the environment and attacker techniques change.
+## Key Takeaways
 
-This repository helped me understand how SOC analysts can move from only investigating alerts to thinking about how those alerts are created and how they can be improved.
+Detection engineering is an ongoing process. A detection should not be treated as a one-time rule.
+
+A useful detection should be:
+
+- Clear
+- Testable
+- Documented
+- Tuned
+- Supported by reliable telemetry
+- Mapped to relevant attacker behaviour
+- Useful for SOC investigation
+
+This project also showed that detection engineering connects many SOC areas together, including threat intelligence, SIEM monitoring, endpoint detection, incident response, and SOAR automation.
+
+---
+
+## Disclaimer
+
+This repository was created for learning and portfolio purposes.
+
+The content is based on practical training rooms, lab scenarios, and detection engineering notes. The examples are intended to show my understanding of SOC workflows, detection logic, Sigma rules, endpoint visibility, and response automation.
