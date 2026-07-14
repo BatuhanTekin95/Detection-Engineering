@@ -1,0 +1,27 @@
+title: MSHTA Launched by a Web Browser
+id: 8d1dc45c-177e-4d4c-b19b-8dd19f530a31
+status: experimental
+description: Detects mshta.exe launched by a common web browser, which may indicate execution of an HTA payload delivered through a malicious link.
+author: Batuhan Tekin
+date: 2026-07-15
+references:
+  - https://attack.mitre.org/techniques/T1218/005/
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_image:
+    Image|endswith: '\mshta.exe'
+  selection_parent:
+    ParentImage|endswith:
+      - '\chrome.exe'
+      - '\msedge.exe'
+      - '\firefox.exe'
+      - '\iexplore.exe'
+  condition: selection_image and selection_parent
+falsepositives:
+  - Legitimate enterprise applications or administration workflows that launch HTA content from a browser
+level: high
+tags:
+  - attack.defense-evasion
+  - attack.t1218.005
