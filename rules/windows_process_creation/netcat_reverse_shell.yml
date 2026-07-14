@@ -1,0 +1,29 @@
+title: Netcat Reverse Shell Execution
+id: 0dc3d57e-f0c2-48cf-a75e-1c2de734bb45
+status: experimental
+description: Detects Netcat-compatible executables using the -e option to launch a command shell, a pattern commonly associated with reverse shells.
+author: Batuhan Tekin
+date: 2026-07-15
+references:
+  - https://attack.mitre.org/techniques/T1059/003/
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_image:
+    Image|endswith:
+      - '\nc.exe'
+      - '\netcat.exe'
+      - '\ncat.exe'
+  selection_execute:
+    CommandLine|contains:
+      - ' -e cmd.exe'
+      - ' -e powershell.exe'
+      - ' -e pwsh.exe'
+  condition: selection_image and selection_execute
+falsepositives:
+  - Authorized network testing or troubleshooting activity
+level: high
+tags:
+  - attack.execution
+  - attack.t1059.003
