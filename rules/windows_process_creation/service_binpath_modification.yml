@@ -1,0 +1,27 @@
+title: Windows Service Binary Path Modification with SC
+id: c7e1a6b4-9d32-4f8a-b251-6c0d7e3f9a45
+status: experimental
+description: Detects sc.exe modifying a Windows service binary path, a technique that may be used for persistence or privilege escalation.
+author: Batuhan Tekin
+date: 2026-07-15
+references:
+  - https://attack.mitre.org/techniques/T1543/003/
+  - https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/05%20-%20Sigma%20Hunt%20Lab%20-%20Creating%20Detection%20Rules%20from%20IOCs.md
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_image:
+    Image|endswith: '\sc.exe'
+  selection_command:
+    CommandLine|contains|all:
+      - ' config '
+      - ' binPath='
+  condition: selection_image and selection_command
+falsepositives:
+  - Legitimate service installation, repair, or software deployment
+level: high
+tags:
+  - attack.persistence
+  - attack.privilege-escalation
+  - attack.t1543.003
