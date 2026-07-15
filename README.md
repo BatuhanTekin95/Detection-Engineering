@@ -1,5 +1,7 @@
 # Detection Engineering
 
+[![Validate Sigma rules](https://github.com/BatuhanTekin95/Detection-Engineering/actions/workflows/validate-sigma.yml/badge.svg)](https://github.com/BatuhanTekin95/Detection-Engineering/actions/workflows/validate-sigma.yml)
+
 This repository documents my detection engineering learning path through SOC-focused notes, practical labs, and reusable Sigma rules.
 
 The goal is to understand how detections are designed, tested, tuned, documented, and connected to investigation workflows. The project covers detection fundamentals, threat intelligence, Sigma, IOC-based hunting, endpoint visibility with Aurora EDR, and SOAR concepts.
@@ -22,6 +24,7 @@ The goal is to understand how detections are designed, tested, tuned, documented
 ├── rules/
 │   └── windows_process_creation/     # Reusable Sigma rules
 ├── scripts/                          # Local validation utilities
+├── tests/                            # Positive and negative event examples
 └── .github/workflows/                # Automated rule validation
 ```
 
@@ -44,15 +47,28 @@ The goal is to understand how detections are designed, tested, tuned, documented
 | [MSHTA launched by a browser](rules/windows_process_creation/mshta_from_browser.yml) | Browser process spawning `mshta.exe` | T1218.005 | Experimental |
 | [Suspicious Certutil download](rules/windows_process_creation/certutil_suspicious_download.yml) | `certutil.exe` with common download flags | T1105 | Experimental |
 | [Netcat reverse shell](rules/windows_process_creation/netcat_reverse_shell.yml) | Netcat-compatible executable launching a command shell with `-e` | T1059.003 | Experimental |
+| [PowerUp enumeration](rules/windows_process_creation/powerup_invoke_allchecks.yml) | PowerUp `Invoke-AllChecks` execution | PowerSploit S0194 | Experimental |
+| [Service binary modification](rules/windows_process_creation/service_binpath_modification.yml) | `sc.exe config` changing a service `binPath` | T1543.003 | Experimental |
+| [RunOnce persistence](rules/windows_process_creation/runonce_registry_persistence.yml) | `reg.exe` adding a RunOnce value | T1547.001 | Experimental |
+| [Password-protected 7-Zip archive](rules/windows_process_creation/password_protected_7zip_archive.yml) | 7-Zip archive creation with password protection | T1560.001 | Experimental |
+| [Suspicious cURL data transfer](rules/windows_process_creation/curl_data_exfiltration.yml) | `curl.exe` submitting data to a remote URL | T1041 | Experimental |
+| [Ransomware Huntme file creation](rules/windows_file_event/ransomware_huntme_file_creation.yml) | File creation using the lab-specific `.huntme` extension | T1486 | Experimental |
 
-The Sigma Hunt lab contains nine completed challenges. Three have currently been converted into standalone, reusable rule files. The remaining six are planned additions:
+All nine Sigma Hunt challenges have been converted into standalone rule files.
 
-- PowerUp enumeration
-- Service binary modification
-- RunOnce persistence
-- Password-protected 7-Zip collection
-- cURL data exfiltration
-- Ransomware file creation
+## MITRE ATT&CK Coverage
+
+| Detection | Tactic | ATT&CK Mapping | Log Source |
+|---|---|---|---|
+| Browser-launched MSHTA | Defense Evasion | T1218.005 | Windows process creation |
+| Certutil download | Command and Control | T1105 | Windows process creation |
+| Netcat reverse shell | Execution | T1059.003 | Windows process creation |
+| PowerUp enumeration | Discovery / Privilege Escalation | PowerSploit S0194 | Windows process creation |
+| Service binary modification | Persistence / Privilege Escalation | T1543.003 | Windows process creation |
+| RunOnce registry persistence | Persistence | T1547.001 | Windows process creation |
+| Password-protected archive | Collection | T1560.001 | Windows process creation |
+| cURL data transfer | Exfiltration | T1041 | Windows process creation |
+| Huntme file creation | Impact | T1486 | Windows file event |
 
 ## Rule Scope and Tuning
 
@@ -61,6 +77,10 @@ The rules are intentionally focused on the behaviour observed in the lab rather 
 - The MSHTA rule focuses on common browser parent processes.
 - The Certutil rule requires the `-urlcache`, `-split`, and `-f` options.
 - The Netcat rule focuses on the `-e` option launching a Windows command shell.
+- The PowerUp rule focuses on the `PowerUp` and `Invoke-AllChecks` strings appearing together.
+- The service and RunOnce rules focus on command-line changes made with native Windows utilities.
+- The archive and cURL rules are medium severity because both tools have common legitimate uses.
+- The ransomware rule is specific to the `.huntme` extension used in the lab scenario.
 - Legitimate administration, deployment, and authorised testing activity may require filtering.
 - Field mappings and case sensitivity can vary between Sigma backends and SIEM platforms.
 
@@ -75,8 +95,14 @@ Sigma files are automatically checked for:
 - A detection condition
 - Unique rule IDs
 - Expected file extensions
+- Positive and negative example coverage
+- Conformance with the official Sigma JSON schema
 
 Automated checks improve consistency, but they do not replace testing against real telemetry.
+
+## Test Examples
+
+[`tests/rule_examples.yml`](tests/rule_examples.yml) contains at least one expected match and one expected non-match for every standalone rule. These examples document the intended behaviour and provide a starting point for backend-specific testing.
 
 ## Tools and Platforms
 
