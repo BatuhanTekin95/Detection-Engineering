@@ -57,7 +57,7 @@ The room also explained different event levels:
 For example, an `Error` event level can describe a significant problem with a service or application.
 
 
-<img width="1680" height="1047" alt="171be6b47de229eb03e7c53c8c1d7e06" src="https://github.com/user-attachments/assets/f2815b3f-3547-4a1e-9d11-c4363d4858e9" />
+<img width="1680" height="1047" alt="Windows Event Logs and Event Viewer screenshot" src="https://github.com/user-attachments/assets/f2815b3f-3547-4a1e-9d11-c4363d4858e9" />
 
 ---
 
@@ -358,7 +358,7 @@ whoami /priv
 
 This command lists the current user privileges. Aurora detected this activity and generated a warning-level event in Windows Event Viewer.
 
-<img width="1679" height="1006" alt="1ce641aa45e7f2d7b0c4b5247f6b6f4e" src="https://github.com/user-attachments/assets/078bda4f-81c4-458f-9cf7-a4d5d38b8dd5" />
+<img width="1679" height="1006" alt="User Privilege Enumeration screenshot" src="https://github.com/user-attachments/assets/078bda4f-81c4-458f-9cf7-a4d5d38b8dd5" />
 
 The alert showed that a Sigma rule matched the `whoami /priv` command. This type of command can be used by administrators, but it can also be used by attackers after gaining access to a host to check available privileges.
 
@@ -371,7 +371,7 @@ The alert showed that a Sigma rule matched the `whoami /priv` command. This type
 
 Another function test showed Aurora detecting suspicious DNS beaconing activity. The alert was related to a Sigma rule match for suspicious Cobalt Strike DNS beaconing.
 
-<img width="1680" height="1009" alt="c246b3ff357d7ef13826831b4ba682b6" src="https://github.com/user-attachments/assets/658643ed-4ef3-4f26-ae5f-cf04db4d44b7" />
+<img width="1680" height="1009" alt="Suspicious DNS Beaconing screenshot" src="https://github.com/user-attachments/assets/658643ed-4ef3-4f26-ae5f-cf04db4d44b7" />
 
 The alert showed that Aurora can detect suspicious network-related behaviour through Sigma rule matching and record the result in Windows Event Viewer.
 
@@ -526,7 +526,7 @@ The matched rule was:
 
 The rule description stated that it detects suspicious use of the WSMAN provider without `PowerShell.exe` as the host application.
 
-<img width="1911" height="829" alt="Ekran görüntüsü 2026-07-09 221915" src="https://github.com/user-attachments/assets/7511de6e-8bd6-4f78-b1f7-3a4e8eb8e0ea" />
+<img width="1911" height="829" alt="Detection Finding 1 - Suspicious Non-PowerShell WSMAN COM Provider screenshot" src="https://github.com/user-attachments/assets/7511de6e-8bd6-4f78-b1f7-3a4e8eb8e0ea" />
 
 **Analyst Note:**  
 This alert is interesting because WSMAN activity is commonly associated with remote management and PowerShell-related activity. In this case, the provider was started by a non-PowerShell host application. This does not automatically confirm malicious activity, but it is suspicious enough to review the host application, parent process, execution context, and whether the activity was expected on the endpoint.
@@ -549,7 +549,7 @@ The matched rule was:
 
 The rule description stated that it detects the execution of known offensive PowerShell scripts used for exploitation or reconnaissance.
 
-<img width="1914" height="813" alt="Ekran görüntüsü 2026-07-09 222005" src="https://github.com/user-attachments/assets/32876abf-fb45-4ca0-89f7-deaf86155ea2" />
+<img width="1914" height="813" alt="Detection Finding 2 - Malicious PowerShell Scripts screenshot" src="https://github.com/user-attachments/assets/32876abf-fb45-4ca0-89f7-deaf86155ea2" />
 
 **Analyst Note:**  
 This alert is more serious because PowerShell is frequently abused during post-exploitation activity. Although PowerShell is a legitimate administrative tool, known offensive modules can indicate reconnaissance, credential access, privilege escalation, or exploitation activity. The alert appeared as a warning in Event Viewer, while the matched Sigma rule had a high severity level. This type of alert should be reviewed together with nearby process execution events, command-line activity, user context, and any related file or network activity.
@@ -618,4 +618,6 @@ The lab connected the previous Sigma Hunt work with a practical endpoint detecti
 
 Overall, this room improved my understanding of endpoint telemetry, Aurora configuration, Sigma-based alerting, and how detection engineering supports SOC investigations.
 
+## Training Context
 
+These notes and screenshots were produced while completing a guided detection engineering training lab. The summaries and analyst observations document my own understanding of the concepts and practical tasks.
