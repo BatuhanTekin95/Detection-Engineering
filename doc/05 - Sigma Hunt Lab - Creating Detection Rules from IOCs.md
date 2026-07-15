@@ -2,7 +2,7 @@
 
 In this lab, I worked on a Sigma Hunt scenario as part of my Detection Engineering project. The main objective was to create Sigma rules based on the Indicators of Compromise provided by the Incident Response team after a ransomware incident.
 
-<img width="1304" height="654" alt="Ekran görüntüsü 2026-07-09 005038" src="https://github.com/user-attachments/assets/6835e8a0-eb4f-4ee1-bef1-5c3113da9a41" />
+<img width="1304" height="654" alt="Lab evidence screenshot" src="https://github.com/user-attachments/assets/6835e8a0-eb4f-4ee1-bef1-5c3113da9a41" />
 
 > The interface provided a rule editor, a run option for testing detections, and separate challenges for each stage of the attack chain.
 
@@ -37,7 +37,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched Sysmon process creation events where Chrome launched `mshta.exe`.
 
-<img width="640" height="421" alt="Ekran görüntüsü 2026-07-09 005341" src="https://github.com/user-attachments/assets/8e677c87-3fa3-47f6-b9b6-2fe3f6131128" />
+<img width="640" height="421" alt="Challenge 1 - Malicious mshta Execution screenshot" src="https://github.com/user-attachments/assets/8e677c87-3fa3-47f6-b9b6-2fe3f6131128" />
 
 The rule successfully detected the malicious activity in the SigHunt interface.
 
@@ -65,7 +65,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched process creation activity where `certutil.exe` was executed with download-related command-line arguments.
 
-<img width="621" height="277" alt="Ekran görüntüsü 2026-07-09 011519" src="https://github.com/user-attachments/assets/3bc08b6b-d25c-415e-9ae0-4f7f0e41d88e" />
+<img width="621" height="277" alt="Challenge 2 - Certutil Download screenshot" src="https://github.com/user-attachments/assets/3bc08b6b-d25c-415e-9ae0-4f7f0e41d88e" />
 
 The rule successfully detected the malicious certutil download activity in the SigHunt interface.
 
@@ -89,7 +89,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched process creation activity where `nc.exe` was executed with the `-e` option. I also used the provided hash as an additional detection condition.
 
-<img width="628" height="341" alt="Ekran görüntüsü 2026-07-09 012422" src="https://github.com/user-attachments/assets/a529d2eb-6bc2-44d3-b53c-74c308f97ce6" />
+<img width="628" height="341" alt="Challenge 3 - Netcat Reverse Shell Execution screenshot" src="https://github.com/user-attachments/assets/a529d2eb-6bc2-44d3-b53c-74c308f97ce6" />
 
 The rule successfully detected the malicious Netcat reverse shell activity in the SigHunt interface.
 
@@ -111,7 +111,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched process creation activity where `powershell.exe` was executed and the command line contained PowerUp-related indicators.
 
-<img width="641" height="302" alt="Ekran görüntüsü 2026-07-09 012750" src="https://github.com/user-attachments/assets/1fdc33cd-339e-4f2f-806c-41ccbc724699" />
+<img width="641" height="302" alt="Challenge 4 - PowerUp Enumeration screenshot" src="https://github.com/user-attachments/assets/1fdc33cd-339e-4f2f-806c-41ccbc724699" />
 
 The rule successfully detected the PowerUp enumeration activity in the SigHunt interface.
 
@@ -133,7 +133,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched process creation activity where `sc.exe` was executed with service configuration related arguments.
 
-<img width="646" height="328" alt="Ekran görüntüsü 2026-07-09 013145" src="https://github.com/user-attachments/assets/3fda42ee-4ef8-4a8a-8869-6a9580c75784" />
+<img width="646" height="328" alt="Challenge 5 - Service Binary Modification screenshot" src="https://github.com/user-attachments/assets/3fda42ee-4ef8-4a8a-8869-6a9580c75784" />
 
 The rule successfully detected the service binary modification activity in the SigHunt interface.
 
@@ -154,7 +154,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched process creation activity where `reg.exe` was executed with command-line arguments related to adding a RunOnce registry entry.
 
-<img width="652" height="307" alt="Ekran görüntüsü 2026-07-09 013512" src="https://github.com/user-attachments/assets/270cb674-f9ca-4a6a-8b54-dc864279d10e" />
+<img width="652" height="307" alt="Challenge 6 - RunOnce Persistence screenshot" src="https://github.com/user-attachments/assets/270cb674-f9ca-4a6a-8b54-dc864279d10e" />
 
 The rule successfully detected the RunOnce persistence activity in the SigHunt interface.
 
@@ -176,7 +176,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched process creation activity where `7z.exe` was executed with archive creation and password-related arguments.
 
-<img width="646" height="312" alt="Ekran görüntüsü 2026-07-09 013857" src="https://github.com/user-attachments/assets/23c3f263-6c12-4124-87b2-e07b8091ee51" />
+<img width="646" height="312" alt="Challenge 7 - 7-Zip Archive Collection screenshot" src="https://github.com/user-attachments/assets/23c3f263-6c12-4124-87b2-e07b8091ee51" />
 
 The rule successfully detected the suspicious 7-Zip archive activity in the SigHunt interface.
 
@@ -198,7 +198,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched process creation activity where `curl.exe` was executed with a data transfer related command-line argument.
 
-<img width="628" height="303" alt="Ekran görüntüsü 2026-07-09 013953" src="https://github.com/user-attachments/assets/ee120e8a-1204-4247-8cda-a11784653c10" />
+<img width="628" height="303" alt="Challenge 8 - cURL Data Exfiltration screenshot" src="https://github.com/user-attachments/assets/ee120e8a-1204-4247-8cda-a11784653c10" />
 
 The rule successfully detected the cURL data exfiltration activity in the SigHunt interface.
 
@@ -219,7 +219,7 @@ For this detection, I focused on the following fields:
 
 The detection logic matched file creation events where the target filename ended with the `.huntme` extension.
 
-<img width="636" height="272" alt="Ekran görüntüsü 2026-07-09 014404" src="https://github.com/user-attachments/assets/fb4eac83-814c-4701-8d19-55d7aa3b8b21" />
+<img width="636" height="272" alt="Challenge 9 - Ransomware File Encryption screenshot" src="https://github.com/user-attachments/assets/fb4eac83-814c-4701-8d19-55d7aa3b8b21" />
 
 The rule successfully detected the ransomware file encryption activity in the SigHunt interface.
 
@@ -267,4 +267,6 @@ The key takeaways from this lab were:
 
 This lab showed how incident response findings and IOCs can be turned into practical Sigma detections that support future threat detection and SOC investigation workflows.
 
+## Training Context
 
+These notes and screenshots were produced while completing a guided detection engineering training lab. The summaries and analyst observations document my own understanding of the concepts and practical tasks.
