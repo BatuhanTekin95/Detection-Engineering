@@ -251,7 +251,7 @@ The goal was to understand how Windows Security logs can be used to detect acces
 
 The first step was enabling **Audit object access** from Local Security Policy. I configured the policy to log both successful and failed access attempts.
 
-<img width="418" height="507" alt="Ekran görüntüsü 2026-06-29 151534" src="https://github.com/user-attachments/assets/fc39aa49-eb5e-4575-94b9-0bc4b330f1a8" />
+<img width="418" height="507" alt="Step 1: Enabling Object Access Auditing screenshot" src="https://github.com/user-attachments/assets/fc39aa49-eb5e-4575-94b9-0bc4b330f1a8" />
 
 
 > I enabled object access auditing for both **Success** and **Failure** events so Windows could log access attempts against the monitored tripwire file.
@@ -267,7 +267,7 @@ I named the file:
 Secret Document.txt
 ```
 
-<img width="952" height="327" alt="Ekran görüntüsü 2026-06-29 151717" src="https://github.com/user-attachments/assets/d343ceb7-713c-4a45-8953-0c06d7ff54a0" />
+<img width="952" height="327" alt="Step 2: Creating the Tripwire File screenshot" src="https://github.com/user-attachments/assets/d343ceb7-713c-4a45-8953-0c06d7ff54a0" />
 
 > I created a simple sensitive-looking text file to act as the tripwire object. The goal was to monitor access to this file and generate Windows Security events when it was opened or read.
 
@@ -277,7 +277,7 @@ After creating the tripwire file, I opened the advanced security settings of the
 
 The auditing rule was set to monitor successful read access attempts for the `Everyone` principal.
 
-<img width="761" height="518" alt="Ekran görüntüsü 2026-06-29 152309" src="https://github.com/user-attachments/assets/29c1deb6-83c6-454e-bd06-387356372353" />
+<img width="761" height="518" alt="Step 3: Configuring File Auditing screenshot" src="https://github.com/user-attachments/assets/29c1deb6-83c6-454e-bd06-387356372353" />
 
 > I added an auditing entry for `Everyone` and configured it to monitor successful `Read & execute` access. This allowed Windows to generate Security events when the tripwire file was accessed.
 
@@ -289,7 +289,7 @@ After configuring the auditing entry, I accessed the monitored file through Comm
 type "C:\Users\Administrator\Desktop\Secret Document.txt"
 ```
 
-<img width="977" height="508" alt="Ekran görüntüsü 2026-06-29 152444" src="https://github.com/user-attachments/assets/72414685-6534-420d-a2bc-e917e5ec3f18" />
+<img width="977" height="508" alt="Step 4: Triggering the Tripwire screenshot" src="https://github.com/user-attachments/assets/72414685-6534-420d-a2bc-e917e5ec3f18" />
 
 > I accessed the monitored file through `cmd.exe` to trigger the tripwire. This action generated Windows Security events showing that the file was accessed from the command line.
 
@@ -300,7 +300,7 @@ After accessing the monitored file through Command Prompt, I reviewed the genera
 
 The most important event was **Event ID 4663**, which shows that an attempt was made to access an object.
 
-<img width="1009" height="872" alt="Ekran görüntüsü 2026-06-29 154226" src="https://github.com/user-attachments/assets/a862549e-4db3-4b4a-9be4-0c738b89c8fb" />
+<img width="1009" height="872" alt="Step 5: Event ID 4663 Analysis screenshot" src="https://github.com/user-attachments/assets/a862549e-4db3-4b4a-9be4-0c738b89c8fb" />
 
 The event showed the following details:
 
@@ -411,4 +411,6 @@ Purple team tactics are also useful for validating detection coverage. By simula
 
 Overall, detection engineering is not a one-time task. It needs continuous testing, tuning, and improvement as the environment and attacker behaviour change. A good detection strategy should combine multiple layers, use available telemetry effectively, and be reviewed regularly to stay useful.
 
+## Training Context
 
+These notes and screenshots were produced while completing a guided detection engineering training lab. The summaries and analyst observations document my own understanding of the concepts and practical tasks.
