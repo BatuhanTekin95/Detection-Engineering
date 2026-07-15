@@ -112,7 +112,7 @@ Some important parts of Detection as Code include:
 * Deploying detections to staging before production
 * Tuning and updating detections after testing
 
-<img width="3834" height="3714" alt="d5dcb2327fef9f42f4958212efb5dd2c" src="https://github.com/user-attachments/assets/30c39a01-1f78-4dcf-9cb0-daa700304be8" />
+<img width="3834" height="3714" alt="Detection as Code screenshot" src="https://github.com/user-attachments/assets/30c39a01-1f78-4dcf-9cb0-daa700304be8" />
 
 > The Detection as Code workflow shows that detections should not be treated as one-time rules. They need to be tested, updated, and improved as the environment and attacker behaviours change.
 
@@ -229,7 +229,7 @@ For example, if an attacker uses PowerShell for execution, this activity can be 
 
 The Cyber Analytics Repository, also known as CAR, can also support detection engineering by providing analytics related to ATT&CK techniques.
 
-<img width="1634" height="609" alt="3002249bee56ca5ab666e92e461cdb48" src="https://github.com/user-attachments/assets/048f7e4d-076f-4b17-984e-575420ab762b" />
+<img width="1634" height="609" alt="MITRE ATT&CK and CAR Frameworks screenshot" src="https://github.com/user-attachments/assets/048f7e4d-076f-4b17-984e-575420ab762b" />
 
 > The image shows the MITRE ATT&CK matrix and how attacker tactics and techniques can be mapped during detection gap analysis and detection planning.
 
@@ -243,7 +243,7 @@ This is important for detection engineering because it explains why behaviour-ba
 
 For example, detecting a malicious IP address can be useful, but the attacker can quickly change that IP address. However, detecting attacker behaviour such as suspicious PowerShell execution, credential dumping, or lateral movement patterns creates more pressure on the attacker.
 
-<img width="1012" height="800" alt="bcf0b565e7be2702dc3a2e2c46c6054b" src="https://github.com/user-attachments/assets/aee8ab59-e4fd-4f8b-a9e4-9e4ed89d9f0e" />
+<img width="1012" height="800" alt="Pyramid of Pain screenshot" src="https://github.com/user-attachments/assets/aee8ab59-e4fd-4f8b-a9e4-9e4ed89d9f0e" />
 
 > The image shows why detections based on tools and TTPs create more difficulty for attackers than detections based only on hashes, IP addresses, or domains.
 
@@ -267,7 +267,7 @@ This framework helps analysts understand where an attacker is in the attack life
 
 For example, detections can be created for suspicious delivery methods, exploitation attempts, malware installation, command and control communication, or final impact activity.
 
-<img width="920" height="456" alt="491cbe4c1851ca69aea2a387e5525321" src="https://github.com/user-attachments/assets/3728bbe8-e54a-4c19-ad08-a2980c0829f9" />
+<img width="920" height="456" alt="Cyber Kill Chain screenshot" src="https://github.com/user-attachments/assets/3728bbe8-e54a-4c19-ad08-a2980c0829f9" />
 
 > The image shows the main phases of the Cyber Kill Chain and how detections can be planned across different stages of an attack.
 
@@ -279,7 +279,7 @@ It provides a more detailed view of an intrusion by covering more phases across 
 
 This is useful because real attacks do not always follow a simple linear path. Attackers may move between discovery, privilege escalation, lateral movement, credential access, collection, exfiltration, and impact.
 
-<img width="1051" height="678" alt="f78d42cc461eaebffd806666646f6cbb" src="https://github.com/user-attachments/assets/30204350-2214-414e-8855-fc71eb038d1e" />
+<img width="1051" height="678" alt="Unified Kill Chain screenshot" src="https://github.com/user-attachments/assets/30204350-2214-414e-8855-fc71eb038d1e" />
 
 > The image shows the 18 phases of the Unified Kill Chain and highlights that real intrusions can involve many stages such as persistence, defense evasion, pivoting, discovery, privilege escalation, credential access, lateral movement, exfiltration, and impact.
 
@@ -327,7 +327,7 @@ The main stages of the framework are:
 * **Priority:** Defines the importance of the alert and helps analysts understand how quickly it should be handled.
 * **Response:** Provides guidance for triaging and investigating the alert.
 
-<img width="1140" height="665" alt="28b4c33f004df15d26ae8d5b2862b445" src="https://github.com/user-attachments/assets/b9473b6e-f205-4cfe-8ab3-0f68fbfbce4d" />
+<img width="1140" height="665" alt="Alerting and Detection Strategy Framework screenshot" src="https://github.com/user-attachments/assets/b9473b6e-f205-4cfe-8ab3-0f68fbfbce4d" />
 
 > The image shows the main stages of the Alerting and Detection Strategy Framework. A detection should include not only the alert logic, but also its goal, categorisation, technical context, blind spots, false positives, validation steps, priority, and response guidance.
 
@@ -410,4 +410,6 @@ Detection engineering is not only about creating alerts. It also includes unders
 
 The main takeaway from this section is that effective detections should be clear, testable, and adaptable. A detection that is not maintained can quickly become noisy or outdated, especially as attackers change their techniques and infrastructure.
 
+## Training Context
 
+These notes and screenshots were produced while completing a guided detection engineering training lab. The summaries and analyst observations document my own understanding of the concepts and practical tasks.
