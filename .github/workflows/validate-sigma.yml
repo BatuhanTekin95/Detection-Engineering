@@ -48,4 +48,4 @@ jobs:
         run: sigma plugin install splunk
 
       - name: Convert all rules to Splunk queries
-        run: sigma convert -t splunk rules > /tmp/sigma-splunk-queries.txt
+        run: sigma convert -t splunk --without-pipeline rules > /tmp/sigma-splunk-queries.txt
