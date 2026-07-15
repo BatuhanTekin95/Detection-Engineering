@@ -346,7 +346,7 @@ The search query used was:
 AnyDesk AND --install
 ```
 
-<img width="1907" height="456" alt="Ekran görüntüsü 2026-07-07 210924" src="https://github.com/user-attachments/assets/e5ab850a-c26a-4c2e-94fe-d05c715435f7" />
+<img width="1907" height="456" alt="Validating the Detection in Kibana screenshot" src="https://github.com/user-attachments/assets/e5ab850a-c26a-4c2e-94fe-d05c715435f7" />
 
 The search returned matching AnyDesk installation events.
 
@@ -432,13 +432,13 @@ I searched for scheduled task creation activity in Kibana using the following qu
 schtasks AND create
 ```
 
-<img width="1904" height="462" alt="Ekran görüntüsü 2026-07-07 211954" src="https://github.com/user-attachments/assets/a502f834-9b5e-40a9-963b-a4ece53601b8" />
+<img width="1904" height="462" alt="Searching for Scheduled Task Activity in Kibana screenshot" src="https://github.com/user-attachments/assets/a502f834-9b5e-40a9-963b-a4ece53601b8" />
 
 The search returned two matching events. One of the events was related to the Task Scheduler configuration tool, and the other event was related to the Windows Command Processor.
 
 I opened the Windows Command Processor event and reviewed the command-line details.
 
-<img width="1912" height="549" alt="Ekran görüntüsü 2026-07-07 212732" src="https://github.com/user-attachments/assets/9f0ee7b4-ffdf-4bd8-9f9c-3b57961cd653" />
+<img width="1912" height="549" alt="Searching for Scheduled Task Activity in Kibana screenshot" src="https://github.com/user-attachments/assets/9f0ee7b4-ffdf-4bd8-9f9c-3b57961cd653" />
 
 The `process.command_line` field showed the following command:
 
@@ -492,7 +492,7 @@ file_event
 
 I searched for `.txt` file creation activity in Kibana and reviewed the file event results.
 
-<img width="1904" height="595" alt="Ekran görüntüsü 2026-07-07 213252" src="https://github.com/user-attachments/assets/effc9a1c-dd30-4481-b730-6de2ef004df7" />
+<img width="1904" height="595" alt="Reviewing File Creation Events screenshot" src="https://github.com/user-attachments/assets/effc9a1c-dd30-4481-b730-6de2ef004df7" />
 
 The results showed multiple `.txt` related file creation events. Many of them were related to Windows Search / Cortana cache activity, such as `SearchUI.exe` creating files under `DeviceSearchCache`.
 
@@ -528,7 +528,7 @@ The query used was:
 cmd.exe
 ```
 
-<img width="1909" height="561" alt="Ekran görüntüsü 2026-07-07 221620" src="https://github.com/user-attachments/assets/e140910a-44b5-415d-a2d3-52e1c22b39cb" />
+<img width="1909" height="561" alt="Reviewing Ransomware File Creation Activity screenshot" src="https://github.com/user-attachments/assets/e140910a-44b5-415d-a2d3-52e1c22b39cb" />
 
 The results showed a file creation event related to `cmd.exe`.
 
@@ -606,6 +606,6 @@ This room showed how Sigma rules can support detection engineering by making det
 
 > From an analyst point of view, a Sigma rule is only useful when it is tested against real logs and adjusted to match the actual field names, log sources, and backend configuration of the environment.
 
+## Training Context
 
-
-
+These notes and screenshots were produced while completing a guided detection engineering training lab. The summaries and analyst observations document my own understanding of the concepts and practical tasks.
