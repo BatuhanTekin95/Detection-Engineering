@@ -38,7 +38,7 @@ SOC teams can face several challenges when handling alerts and incidents manuall
 | **Manual Processes** | Repetitive investigation and response steps can slow down analysts and increase the chance of mistakes. |
 | **Talent Shortage** | SOC teams may not always have enough experienced analysts to handle the growing number of alerts and responsibilities. |
 
-<img width="524" height="606" alt="6645aa8c024f7893371eb7ac-1759490774771" src="https://github.com/user-attachments/assets/23c06d0d-d7ed-4eb0-8577-b5e2eda18f3c" />
+<img width="524" height="606" alt="Challenges Faced by SOC Teams screenshot" src="https://github.com/user-attachments/assets/23c06d0d-d7ed-4eb0-8577-b5e2eda18f3c" />
 
 > This image shows common SOC challenges such as alert fatigue, disconnected tools, manual processes, and overloaded analysts.
 
@@ -79,7 +79,7 @@ SOAR is useful because it can help analysts:
 From a SOC analyst point of view, SOAR improves consistency. It allows common investigation and response steps to be documented, repeated, and automated through playbooks.
 
 
-<img width="1231" height="719" alt="6645aa8c024f7893371eb7ac-1759484710562" src="https://github.com/user-attachments/assets/b4113db4-41a6-46ef-b460-0e8272b6460e" />
+<img width="1231" height="719" alt="What is SOAR? screenshot" src="https://github.com/user-attachments/assets/b4113db4-41a6-46ef-b460-0e8272b6460e" />
 
 > This image shows how SOAR connects tools such as SIEM, threat intelligence feeds, firewalls, IDS, and IAM systems to support automated response, reduced alert fatigue, and consistent workflows.
 
@@ -152,7 +152,7 @@ Response actions should still be controlled carefully. Some actions can be fully
 
 From an analyst point of view, SOAR does not remove the need for investigation. It helps make the response process faster, more organised, and more consistent.
 
-<img width="1219" height="713" alt="6645aa8c024f7893371eb7ac-1759484710596" src="https://github.com/user-attachments/assets/7622c583-3f31-44ed-8e9b-129fde095834" />
+<img width="1219" height="713" alt="3. Response screenshot" src="https://github.com/user-attachments/assets/7622c583-3f31-44ed-8e9b-129fde095834" />
 
 > This image compares SOC operations before and after SOAR. SOAR helps connect tools, reduce alerting noise, automate response steps, and support faster containment.
 
@@ -206,7 +206,7 @@ For example, when a suspicious email is received, the playbook may:
 
 From a SOC analyst point of view, this is useful because the repetitive enrichment and checking steps can be automated, while the analyst can still review complex or unclear cases.
 
-<img width="1434" height="1140" alt="750415d37d5d45da28ea0f83d3754857" src="https://github.com/user-attachments/assets/a370face-d24f-4eab-b28a-81d72b80f373" />
+<img width="1434" height="1140" alt="Phishing Playbook screenshot" src="https://github.com/user-attachments/assets/a370face-d24f-4eab-b28a-81d72b80f373" />
 
 > This playbook shows how SOAR can handle a suspicious email by checking attachments and URLs, enriching indicators, updating tickets, and triggering remediation actions when malicious content is identified.
 
@@ -248,5 +248,6 @@ The main value of SOAR is not replacing SOC analysts, but helping them work more
 
 The phishing and CVE patching examples showed how playbooks can reduce manual work, improve consistency, and support faster investigation, remediation, and response across different SOC workflows.
 
+## Training Context
 
-
+These notes and screenshots were produced while completing a guided detection engineering training lab. The summaries and analyst observations document my own understanding of the concepts and practical tasks.
