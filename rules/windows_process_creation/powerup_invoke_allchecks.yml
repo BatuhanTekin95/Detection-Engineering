@@ -1,0 +1,28 @@
+title: PowerUp Invoke-AllChecks Enumeration
+id: a4b3e8d1-2f14-4c2b-9a81-7e5d6f4c3b20
+status: experimental
+description: Detects PowerShell execution containing PowerUp and Invoke-AllChecks, which may indicate local privilege escalation enumeration.
+author: Batuhan Tekin
+date: 2026-07-15
+references:
+  - https://attack.mitre.org/software/S0194/
+  - https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/05%20-%20Sigma%20Hunt%20Lab%20-%20Creating%20Detection%20Rules%20from%20IOCs.md
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_image:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+  selection_command:
+    CommandLine|contains|all:
+      - 'PowerUp'
+      - 'Invoke-AllChecks'
+  condition: selection_image and selection_command
+falsepositives:
+  - Authorized security assessments or administrative auditing
+level: high
+tags:
+  - attack.discovery
+  - attack.privilege-escalation
