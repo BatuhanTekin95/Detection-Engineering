@@ -1,0 +1,26 @@
+title: RunOnce Registry Persistence with Reg
+id: e2f9c5a7-6b41-4d83-9a20-3f7c1e5b8d64
+status: experimental
+description: Detects reg.exe adding a value to a Windows RunOnce registry key, which may establish logon persistence.
+author: Batuhan Tekin
+date: 2026-07-15
+references:
+  - https://attack.mitre.org/techniques/T1547/001/
+  - https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/05%20-%20Sigma%20Hunt%20Lab%20-%20Creating%20Detection%20Rules%20from%20IOCs.md
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_image:
+    Image|endswith: '\reg.exe'
+  selection_command:
+    CommandLine|contains|all:
+      - ' add '
+      - '\Software\Microsoft\Windows\CurrentVersion\RunOnce'
+  condition: selection_image and selection_command
+falsepositives:
+  - Legitimate installers or user applications configuring startup behaviour
+level: high
+tags:
+  - attack.persistence
+  - attack.t1547.001
