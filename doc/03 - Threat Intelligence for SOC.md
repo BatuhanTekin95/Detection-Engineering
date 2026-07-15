@@ -133,7 +133,7 @@ Elastic Stack Query (Lucene)
 
 The IOC list contained defanged IP addresses, and some indicators appeared more than once. Uncoder helped clean the defanged format, remove duplicate indicators, and generate a query that could be used directly in Kibana Discover.
 
-<img width="1871" height="418" alt="Ekran görüntüsü 2026-07-04 181334" src="https://github.com/user-attachments/assets/5ce2dc80-ad4a-4842-ab8a-b5ce1e801eee" />
+<img width="1871" height="418" alt="Step 1: Converting IOCs with Uncoder screenshot" src="https://github.com/user-attachments/assets/5ce2dc80-ad4a-4842-ab8a-b5ce1e801eee" />
 
 After processing the IOC list, Uncoder generated the following Elastic query:
 
@@ -160,7 +160,7 @@ Index: filebeat-*
 Timeframe: February 14, 2023 - February 17, 2023
 ```
 
-<img width="1906" height="141" alt="Ekran görüntüsü 2026-07-04 181401" src="https://github.com/user-attachments/assets/31c12c51-55c6-475a-8e20-fb106af69627" />
+<img width="1906" height="141" alt="Step 2: Running the IOC Query in Kibana screenshot" src="https://github.com/user-attachments/assets/31c12c51-55c6-475a-8e20-fb106af69627" />
 
 The search returned:
 
@@ -197,7 +197,7 @@ Order: Descending
 Size: 200
 ```
 
-<img width="1900" height="558" alt="Ekran görüntüsü 2026-07-04 182547" src="https://github.com/user-attachments/assets/97557463-4448-4884-9317-b9ab6120c18c" />
+<img width="1900" height="558" alt="Step 3: Visualizing IOC Hits by Destination IP screenshot" src="https://github.com/user-attachments/assets/97557463-4448-4884-9317-b9ab6120c18c" />
 
 
 This visualization showed how many times each IOC destination IP appeared in the logs.
@@ -224,7 +224,7 @@ I also checked the destination port values for the IOC-related connections.
 
 The visualization showed that all matching IOC connections used destination port `80`.
 
-<img width="1337" height="67" alt="Ekran görüntüsü 2026-07-04 183530" src="https://github.com/user-attachments/assets/b77fbfc3-0b63-450e-8e4c-73e9a953dc7d" />
+<img width="1337" height="67" alt="Step 4: Destination Port Analysis screenshot" src="https://github.com/user-attachments/assets/b77fbfc3-0b63-450e-8e4c-73e9a953dc7d" />
 
 
 | Field | Value |
@@ -349,7 +349,7 @@ source.ip
 destination.port
 ```
 
-<img width="1899" height="530" alt="DNS Sinkhole Investigation" src="https://github.com/user-attachments/assets/d5db6ca7-fe70-4549-805b-10a9bb7082f7" />
+<img width="1899" height="530" alt="Step 5: Hunting Sinkholed Domains screenshot" src="https://github.com/user-attachments/assets/d5db6ca7-fe70-4549-805b-10a9bb7082f7" />
 
 In the results, the suspicious domain appeared in the DNS logs under the `zeek.dns.query` field. The DNS response data showed the sinkhole IP address, which indicated that the domain resolution was redirected instead of allowing communication with the real malicious infrastructure.
 
@@ -382,7 +382,7 @@ Order: Descending
 Size: 5
 ```
 
-<img width="1913" height="606" alt="Ekran görüntüsü 2026-07-04 193310" src="https://github.com/user-attachments/assets/adaeca49-03db-42ea-b5f2-3ff0462f93f1" />
+<img width="1913" height="606" alt="DNS Resolved IP Analysis screenshot" src="https://github.com/user-attachments/assets/adaeca49-03db-42ea-b5f2-3ff0462f93f1" />
 
 The results showed that `192.168.5.13` was the most common resolved IP address.
 
@@ -519,7 +519,7 @@ I used the following KQL query:
 dns.resolved_ip:"0.0.0.0"
 ```
 
-<img width="1290" height="133" alt="Ekran görüntüsü 2026-07-05 022523" src="https://github.com/user-attachments/assets/f2ff6c40-dd9f-4786-b18d-1996f3c3aed7" />
+<img width="1290" height="133" alt="Validating the Sinkhole Detection Query in Kibana screenshot" src="https://github.com/user-attachments/assets/f2ff6c40-dd9f-4786-b18d-1996f3c3aed7" />
 
 The query returned:
 
@@ -553,7 +553,7 @@ Metric: Count of records
 Number of values: 100
 ```
 
-<img width="1137" height="606" alt="Ekran görüntüsü 2026-07-05 023911" src="https://github.com/user-attachments/assets/2ca4bd0f-f4aa-402d-8eb6-1eccfe569d5d" />
+<img width="1137" height="606" alt="Identifying Unique Sinkholed Domains screenshot" src="https://github.com/user-attachments/assets/2ca4bd0f-f4aa-402d-8eb6-1eccfe569d5d" />
 
 The visualization showed **7 unique domains** that resolved to `0.0.0.0`.
 
@@ -602,4 +602,6 @@ Finally, Sigma and ElastAlert were used to show how threat intelligence indicato
 
 From a SOC analyst point of view, Threat Intelligence is not only about collecting IOCs. It becomes valuable when it is validated, applied to real logs, connected to detection logic, and used to improve both prevention and response capabilities.
 
+## Training Context
 
+These notes and screenshots were produced while completing a guided detection engineering training lab. The summaries and analyst observations document my own understanding of the concepts and practical tasks.
