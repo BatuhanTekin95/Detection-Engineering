@@ -1,0 +1,22 @@
+title: Ransomware File Creation with Huntme Extension
+id: d3c7a5e9-1b64-4f82-a930-6e2d8c4b7f15
+status: experimental
+description: Detects creation of files using the .huntme extension observed in the ransomware lab scenario.
+author: Batuhan Tekin
+date: 2026-07-15
+references:
+  - https://attack.mitre.org/techniques/T1486/
+  - https://github.com/BatuhanTekin95/Detection-Engineering/blob/main/doc/05%20-%20Sigma%20Hunt%20Lab%20-%20Creating%20Detection%20Rules%20from%20IOCs.md
+logsource:
+  category: file_event
+  product: windows
+detection:
+  selection:
+    TargetFilename|endswith: '.huntme'
+  condition: selection
+falsepositives:
+  - Controlled ransomware simulations or intentionally created test files
+level: high
+tags:
+  - attack.impact
+  - attack.t1486
